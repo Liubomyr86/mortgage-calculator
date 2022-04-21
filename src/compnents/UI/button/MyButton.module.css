@@ -1,8 +1,11 @@
 .myBtn {
     padding: 5px 15px;
-    color: #008080;
+    color: #fff;
     font-size: 14px;
-    background: transparent;
-    border: 1px solid #008080;
+    background: #395870;
+    background: linear-gradient(#49708f, #293f50);
+    width: 85px;
+    border: 1px solid #395870;
+    border-radius: 5px;
     cursor: pointer;
 }

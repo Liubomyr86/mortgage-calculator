@@ -1,7 +1,7 @@
 export interface BankModel {
     bankName: string;
     interestRate: number;
-    maximumLoan: number;
-    minimumDownPayment: number;
+    maxLoan: number;
+    minDownPayment: number;
     loanTerm: number;
 }

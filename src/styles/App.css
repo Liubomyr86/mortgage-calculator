@@ -13,3 +13,95 @@
 .App {
     width: 800px;
 }
+
+.logo {
+    width: 100%;
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #4a4a4d;
+    font: 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+th,
+td {
+    padding: 10px 15px;
+    vertical-align: middle;
+}
+
+thead {
+    background: #395870;
+    background: linear-gradient(#49708f, #293f50);
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+th:first-child {
+    border-top-left-radius: 5px;
+    text-align: left;
+}
+
+th:last-child {
+    border-top-right-radius: 5px;
+}
+
+tbody tr:nth-child(odd):hover {
+    background: #f0f0f2;
+    transition: all 0.3s linear;
+}
+
+tbody tr:nth-child(even) {
+    background: #f0f0f2;
+}
+
+td {
+    border-bottom: 1px solid #cecfd5;
+    border-right: 1px solid #cecfd5;
+}
+
+td:first-child {
+    border-left: 1px solid #cecfd5;
+}
+
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.bank-item {
+    cursor: pointer;
+}
+
+.text-title {
+    color: #395870;
+    text-align: left;
+}
+
+.text-offset {
+    color: #7c7c80;
+    text-align: center;
+    font-weight: 600;
+}
+
+.hide-btn {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-container button:last-child {
+    margin-left: 10px;
+}
