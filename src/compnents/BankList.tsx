@@ -1,9 +1,10 @@
 import React from 'react';
-import { BankModel } from '../models/bank';
+import { BankListProps } from '../models/bank';
 import { BankItem } from './BankItem';
 
-export const BankList = (props: { banks: BankModel[] }): JSX.Element => {
-    const { banks } = props;
+export const BankList = (props: BankListProps): JSX.Element => {
+    const { banks, delete: remove } = props;
+
     return (
         <div>
             <table>
@@ -20,7 +21,7 @@ export const BankList = (props: { banks: BankModel[] }): JSX.Element => {
                 </thead>
                 <tbody>
                     {banks.map((bank) => (
-                        <BankItem {...bank} key={bank.bankName} />
+                        <BankItem bank={bank} remove={remove} key={bank.id} />
                     ))}
                 </tbody>
             </table>

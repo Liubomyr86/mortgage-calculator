@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { BankModel } from '../models/bank';
+import { BankItemsProps } from '../models/bank';
 import { MyButton } from './UI/button/MyButton';
 
-export const BankItem = ({ bankName, interestRate, maxLoan, minDownPayment, loanTerm }: BankModel): JSX.Element => {
+export const BankItem = (props: BankItemsProps): JSX.Element => {
+    const { bank, remove } = props;
+    const { bankName, interestRate, maxLoan, minDownPayment, loanTerm } = bank;
     const [isClass, setIsClass] = useState(false);
     return (
         <>
@@ -10,16 +12,16 @@ export const BankItem = ({ bankName, interestRate, maxLoan, minDownPayment, loan
                 <td className="text-title">
                     <strong>{bankName}</strong>
                 </td>
-                <td className="text-offset">{interestRate.toFixed(2)}</td>
-                <td className="text-offset">{maxLoan.toFixed(2)}</td>
-                <td className="text-offset">{minDownPayment.toFixed(2)}</td>
-                <td className="text-offset">{loanTerm}</td>
+                <td className="text-offset">{(+interestRate).toFixed(2)}</td>
+                <td className="text-offset">{(+maxLoan).toFixed(2)}</td>
+                <td className="text-offset">{(+minDownPayment).toFixed(2)}</td>
+                <td className="text-offset">{+loanTerm}</td>
             </tr>
             <tr className={`${isClass ? '' : 'hide-btn'}`}>
                 <td colSpan={5}>
                     <div className="btn-container">
                         <MyButton>Edit</MyButton>
-                        <MyButton style={{ marginLeft: '10px' }}>Remove</MyButton>
+                        <MyButton onClick={() => remove(bank)}>Remove</MyButton>
                     </div>
                 </td>
             </tr>
