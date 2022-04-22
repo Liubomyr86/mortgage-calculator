@@ -20,7 +20,7 @@ export const BankForm = (props: BankFormProps): JSX.Element => {
     };
 
     return (
-        <form style={{ width: '600px' }}>
+        <form style={{ width: '600px', margin: 'auto' }}>
             <MyInput
                 placeholder="Bank name"
                 value={bank.bankName}

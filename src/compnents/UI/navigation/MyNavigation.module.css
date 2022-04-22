@@ -1,0 +1,21 @@
+.myNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 15px;
+    height: 50px;
+    width: 100vw;
+    margin-bottom: 10px;
+    background-color: #f0f0f2;
+}
+
+.myNav a {
+    color: #395870;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.myNav a:hover {
+    color: #6b96b6;
+    transition: all 0.3s linear;
+}
