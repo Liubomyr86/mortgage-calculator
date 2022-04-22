@@ -4,7 +4,7 @@ import { MyContext } from '../context/MyContext';
 import { MyButton } from './UI/button/MyButton';
 
 export const BankItem = (props: BankItemsProps): JSX.Element => {
-    const { setBankInputs, deleteBank, setIsUpdate } = useContext(MyContext);
+    const { setBankInputs, setIsUpdate, deleteBank } = useContext(MyContext);
     const { bank } = props;
     const { bankName, interestRate, maxLoan, minDownPayment, loanTerm } = bank;
     const [isClass, setIsClass] = useState(false);
@@ -13,6 +13,13 @@ export const BankItem = (props: BankItemsProps): JSX.Element => {
         if (setBankInputs && setIsUpdate) {
             setBankInputs(bank);
             setIsUpdate(true);
+        }
+    };
+
+    const removeBank = (): void => {
+        if (deleteBank && setIsUpdate) {
+            deleteBank(bank);
+            setIsUpdate(false);
         }
     };
 
@@ -31,13 +38,7 @@ export const BankItem = (props: BankItemsProps): JSX.Element => {
                 <td colSpan={5}>
                     <div className="btn-container">
                         <MyButton onClick={editBank}>Edit</MyButton>
-                        <MyButton
-                            onClick={() => {
-                                if (deleteBank) deleteBank(bank);
-                            }}
-                        >
-                            Remove
-                        </MyButton>
+                        <MyButton onClick={removeBank}>Remove</MyButton>
                     </div>
                 </td>
             </tr>

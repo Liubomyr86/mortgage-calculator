@@ -5,7 +5,7 @@ import classes from './MyNavigation.module.css';
 export const MyNavigation = (): JSX.Element => {
     return (
         <nav className={classes.myNav}>
-            <Link to="/main">Main</Link>
+            <Link to="/">Main</Link>
             <Link to="/calculator">Calculator</Link>
         </nav>
     );

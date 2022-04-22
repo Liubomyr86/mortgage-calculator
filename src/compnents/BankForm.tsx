@@ -20,7 +20,7 @@ export const BankForm = (props: BankFormProps): JSX.Element => {
     };
 
     return (
-        <form style={{ width: '600px', margin: 'auto' }}>
+        <form>
             <MyInput
                 placeholder="Bank name"
                 value={bank.bankName}
@@ -46,12 +46,14 @@ export const BankForm = (props: BankFormProps): JSX.Element => {
                 value={bank.loanTerm}
                 onChange={(event) => setBank({ ...bank, loanTerm: event.target.value })}
             />
-            <MyButton type="submit" onClick={(event) => addNewBank(event)} disabled={isUpdate !== false}>
-                Create
-            </MyButton>
-            <MyButton onClick={updateBank} disabled={isUpdate !== true}>
-                Update
-            </MyButton>
+            <div className="btn-container" style={{ justifyContent: 'start' }}>
+                <MyButton type="submit" onClick={(event) => addNewBank(event)} disabled={isUpdate !== false}>
+                    Create
+                </MyButton>
+                <MyButton onClick={updateBank} disabled={isUpdate !== true}>
+                    Update
+                </MyButton>
+            </div>
         </form>
     );
 };
