@@ -9,10 +9,17 @@ export interface BankModel {
 
 export interface BankListProps {
     banks: BankModel[];
-    delete: (bank: BankModel) => void;
 }
 
 export interface BankItemsProps {
     bank: BankModel;
-    remove: (bank: BankModel) => void;
+}
+
+export interface BankFormProps {
+    bank: BankModel;
+    setBank: (bank: BankModel) => void;
+    createBank: (newBank: BankModel) => void;
+    updateBankData: (bank: BankModel) => void;
+    isUpdate: boolean;
+    setIsUpdate: (flag: boolean) => void;
 }

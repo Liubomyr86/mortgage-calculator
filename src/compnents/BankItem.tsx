@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BankItemsProps } from '../models/bank';
+import { MyContext } from '../context/MyContext';
 import { MyButton } from './UI/button/MyButton';
 
 export const BankItem = (props: BankItemsProps): JSX.Element => {
-    const { bank, remove } = props;
+    const { setBankInputs, deleteBank, setIsUpdate } = useContext(MyContext);
+    const { bank } = props;
     const { bankName, interestRate, maxLoan, minDownPayment, loanTerm } = bank;
     const [isClass, setIsClass] = useState(false);
+
+    const editBank = (): void => {
+        if (setBankInputs && setIsUpdate) {
+            setBankInputs(bank);
+            setIsUpdate(true);
+        }
+    };
+
     return (
         <>
             <tr className="bank-item" onClick={() => setIsClass(!isClass)}>
@@ -20,8 +30,14 @@ export const BankItem = (props: BankItemsProps): JSX.Element => {
             <tr className={`${isClass ? '' : 'hide-btn'}`}>
                 <td colSpan={5}>
                     <div className="btn-container">
-                        <MyButton>Edit</MyButton>
-                        <MyButton onClick={() => remove(bank)}>Remove</MyButton>
+                        <MyButton onClick={editBank}>Edit</MyButton>
+                        <MyButton
+                            onClick={() => {
+                                if (deleteBank) deleteBank(bank);
+                            }}
+                        >
+                            Remove
+                        </MyButton>
                     </div>
                 </td>
             </tr>

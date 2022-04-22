@@ -1,22 +1,22 @@
-import React, { MouseEvent, useState } from 'react';
-import { BankModel } from '../models/bank';
+import React, { MouseEvent } from 'react';
+import { BankFormProps } from '../models/bank';
 import { MyButton } from './UI/button/MyButton';
 import { MyInput } from './UI/input/MyInput';
 
-export const BankForm = ({ create }: { create: (newBank: BankModel) => void }): JSX.Element => {
-    const [bank, setBank] = useState<BankModel>({
-        bankName: '',
-        interestRate: '',
-        maxLoan: '',
-        minDownPayment: '',
-        loanTerm: '',
-    });
+export const BankForm = (props: BankFormProps): JSX.Element => {
+    const { bank, setBank, createBank, updateBankData, isUpdate, setIsUpdate } = props;
 
     const addNewBank = (event: MouseEvent): void => {
         event.preventDefault();
         const newBank = { ...bank, id: Date.now() };
-        create(newBank);
+        createBank(newBank);
         setBank({ bankName: '', interestRate: '', maxLoan: '', minDownPayment: '', loanTerm: '' });
+    };
+
+    const updateBank = (): void => {
+        updateBankData(bank);
+        setBank({ bankName: '', interestRate: '', maxLoan: '', minDownPayment: '', loanTerm: '' });
+        setIsUpdate(false);
     };
 
     return (
@@ -46,7 +46,12 @@ export const BankForm = ({ create }: { create: (newBank: BankModel) => void }): 
                 value={bank.loanTerm}
                 onChange={(event) => setBank({ ...bank, loanTerm: event.target.value })}
             />
-            <MyButton onClick={(event) => addNewBank(event)}>Create</MyButton>
+            <MyButton type="submit" onClick={(event) => addNewBank(event)} disabled={isUpdate !== false}>
+                Create
+            </MyButton>
+            <MyButton onClick={updateBank} disabled={isUpdate !== true}>
+                Update
+            </MyButton>
         </form>
     );
 };
