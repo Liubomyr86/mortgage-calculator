@@ -30,21 +30,25 @@ export const BankForm = (props: BankFormProps): JSX.Element => {
                 placeholder="Interest rate"
                 value={bank.interestRate}
                 onChange={(event) => setBank({ ...bank, interestRate: event.target.value })}
+                type="number"
             />
             <MyInput
                 placeholder="Maximum loan"
                 value={bank.maxLoan}
                 onChange={(event) => setBank({ ...bank, maxLoan: event.target.value })}
+                type="number"
             />
             <MyInput
                 placeholder="Minimum down payment"
                 value={bank.minDownPayment}
                 onChange={(event) => setBank({ ...bank, minDownPayment: event.target.value })}
+                type="number"
             />
             <MyInput
                 placeholder=" Loan term"
                 value={bank.loanTerm}
                 onChange={(event) => setBank({ ...bank, loanTerm: event.target.value })}
+                type="number"
             />
             <div className="btn-container" style={{ justifyContent: 'start' }}>
                 <MyButton type="submit" onClick={(event) => addNewBank(event)} disabled={isUpdate !== false}>

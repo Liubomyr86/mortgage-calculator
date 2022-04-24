@@ -2,7 +2,15 @@ import React from 'react';
 import { InputProps } from '../../../models/input';
 import classes from './MyInput.module.css';
 
-export const MyInput: React.FC<InputProps> = ({ id, placeholder, onChange, disabled, value }): JSX.Element => {
+export const MyInput: React.FC<InputProps> = ({
+    id,
+    placeholder,
+    onChange,
+    disabled,
+    value,
+    type,
+    min,
+}): JSX.Element => {
     return (
         <input
             value={value}
@@ -11,6 +19,8 @@ export const MyInput: React.FC<InputProps> = ({ id, placeholder, onChange, disab
             disabled={disabled}
             onChange={onChange}
             className={classes.myInput}
+            type={type || 'text'}
+            min={min || 0}
         />
     );
 };

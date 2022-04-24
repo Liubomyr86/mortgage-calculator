@@ -8,7 +8,7 @@ const Main = (): JSX.Element => {
         useContext(MyContext);
 
     return (
-        <div className="App">
+        <>
             <BankForm
                 createBank={createBank!}
                 setBank={setBankInputs!}
@@ -19,7 +19,7 @@ const Main = (): JSX.Element => {
             />
             <hr style={{ margin: '25px auto', width: '667px' }} />
             <BankList banks={banksList!} />
-        </div>
+        </>
     );
 };
 

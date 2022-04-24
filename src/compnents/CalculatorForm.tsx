@@ -1,44 +1,52 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { MyButton } from './UI/button/MyButton';
 import { MyInput } from './UI/input/MyInput';
 import { MySelect } from './UI/select/MySelect';
-import { MyContext } from '../context/MyContext';
-import { BankModel } from '../models/bank';
+import { CalculatorFormProps } from '../models/calculator';
 
-export const CalculatorForm = (): JSX.Element => {
-    const [selectedBank, setSelectedBank] = useState('');
-    const { banksList } = useContext(MyContext);
+export const CalculatorForm = (props: CalculatorFormProps): JSX.Element => {
+    const {
+        calcInputs,
+        setCalcInputs,
+        bankName,
+        setBankName,
+        bank,
+        setBank,
+        banksList,
+        calculateMortgagePayment,
+        resetMortgagePayment,
+    } = props;
 
-    const calculateMortgagePayment = (
-        bank: BankModel,
-        initialLoanValue: string | number,
-        downPayment: string | number,
-    ): number => {
-        const borrowedMoney = +initialLoanValue - +downPayment;
-        const lengthOfLoan = +bank.loanTerm * 12;
-        const interestRate = +bank.interestRate;
-        const calculedInterest = interestRate / 100;
-        const interestReady = calculedInterest / 12;
-        // We start the calculations
-        const percentage = interestReady;
-        const percentagePlusOne = interestReady + 1;
-        const exponentiationOperator = percentagePlusOne ** lengthOfLoan;
-        const firstDividend = percentage * exponentiationOperator;
-        const secondDividend = exponentiationOperator - 1;
-        const division = firstDividend / secondDividend;
-        const mortgage = borrowedMoney;
-        const quotas = mortgage * division;
-        return quotas;
+    const selectedBank = (value: string): void => {
+        setBankName(value);
+        setBank(banksList!.find((item) => item.bankName === value)!);
     };
 
     return (
         <form>
-            <MyInput placeholder="Initial loan" />
-            <MyInput placeholder="Down payment" />
-            <MySelect defaultValue="Select bank" value={selectedBank} onChange={setSelectedBank} options={banksList!} />
+            <MyInput
+                placeholder="Initial loan"
+                value={calcInputs.initianLoan}
+                onChange={(event) => setCalcInputs({ ...calcInputs, initianLoan: event.target.value })}
+                type="number"
+            />
+            <MyInput
+                placeholder="Down payment"
+                value={calcInputs.downPayment}
+                onChange={(event) => setCalcInputs({ ...calcInputs, downPayment: event.target.value })}
+                type="number"
+            />
+            <MySelect defaultValue="Select bank" value={bankName} onChange={selectedBank} options={banksList!} />
             <div className="btn-container">
-                <MyButton>Calculate</MyButton>
-                <MyButton>Reset</MyButton>
+                <MyButton
+                    onClick={(event) =>
+                        calculateMortgagePayment(event, bank, calcInputs.initianLoan, calcInputs.downPayment)
+                    }
+                    type="submit"
+                >
+                    Calculate
+                </MyButton>
+                <MyButton onClick={resetMortgagePayment}>Reset</MyButton>
             </div>
         </form>
     );

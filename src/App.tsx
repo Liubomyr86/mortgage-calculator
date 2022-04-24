@@ -9,6 +9,8 @@ import Main from './pages/Main';
 import './styles/App.css';
 
 const App = (): JSX.Element => {
+    const [banksList, setBankList] = useState([...banksData]);
+
     const [bankInputs, setBankInputs] = useState<BankModel>({
         bankName: '',
         interestRate: '',
@@ -16,7 +18,6 @@ const App = (): JSX.Element => {
         minDownPayment: '',
         loanTerm: '',
     });
-    const [banksList, setBankList] = useState([...banksData]);
     const [isUpdate, setIsUpdate] = useState(false);
     const createBank = (newBank: BankModel): void => setBankList([...banksList, newBank]);
     const deleteBank = (bank: BankModel): void => setBankList(banksList.filter((item) => item.id !== bank.id));
