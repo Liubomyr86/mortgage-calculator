@@ -125,3 +125,8 @@ form {
     font-weight: 600;
     color: #395870;
 }
+.error {
+    color: red;
+    align-self: flex-start;
+    font-size: 14px;
+}

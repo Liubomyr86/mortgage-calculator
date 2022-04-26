@@ -31,9 +31,9 @@ const App = (): JSX.Element => {
 
     return (
         <MyContext.Provider value={contextValue}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <div className="logo">
-                    <img src="mortgage-calculator-logo.png" alt="mortgage calculator" />
+                    <img src="mortgage-calculator/mortgage-calculator-logo.png" alt="mortgage calculator" />
                 </div>
 
                 <MyNavigation />

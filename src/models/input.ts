@@ -1,4 +1,4 @@
-import { ChangeEventHandler, InputHTMLAttributes } from 'react';
+import { ChangeEventHandler, FocusEventHandler, InputHTMLAttributes } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id?: string;
@@ -6,4 +6,5 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     disabled?: boolean;
     placeholder?: string;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    onBlur?: FocusEventHandler<HTMLInputElement>;
 }

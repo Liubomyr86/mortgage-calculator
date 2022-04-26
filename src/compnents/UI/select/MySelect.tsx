@@ -3,7 +3,7 @@ import { SelectProps } from '../../../models/select';
 
 export const MySelect: React.FC<SelectProps> = ({ options, defaultValue, value, onChange }): JSX.Element => {
     return (
-        <select value={value} onChange={(event) => onChange(event.target.value)}>
+        <select value={value} onChange={(event) => onChange(event)}>
             <option disabled value="">
                 {defaultValue}
             </option>

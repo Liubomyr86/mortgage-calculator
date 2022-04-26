@@ -10,6 +10,7 @@ export const MyInput: React.FC<InputProps> = ({
     value,
     type,
     min,
+    onBlur,
 }): JSX.Element => {
     return (
         <input
@@ -21,6 +22,7 @@ export const MyInput: React.FC<InputProps> = ({
             className={classes.myInput}
             type={type || 'text'}
             min={min || 0}
+            onBlur={onBlur}
         />
     );
 };
