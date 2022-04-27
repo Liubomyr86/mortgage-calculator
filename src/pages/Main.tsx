@@ -17,7 +17,7 @@ const Main = (): JSX.Element => {
                 isUpdate={isUpdate!}
                 setIsUpdate={setIsUpdate!}
             />
-            <hr style={{ margin: '25px auto', width: '667px' }} />
+            <hr style={{ margin: '25px auto', maxWidth: '667px' }} />
             <BankList banks={banksList!} />
         </>
     );

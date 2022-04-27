@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MyNavigation } from './compnents/UI/navigation/MyNavigation';
 import { MyContext } from './context/MyContext';
@@ -19,7 +19,9 @@ const App = (): JSX.Element => {
         loanTerm: '',
     });
     const [isUpdate, setIsUpdate] = useState(false);
-    const createBank = (newBank: BankModel): void => setBankList([...banksList, newBank]);
+    const createBank = (newBank: BankModel): void => {
+        setBankList([...banksList, newBank]);
+    };
     const deleteBank = (bank: BankModel): void => setBankList(banksList.filter((item) => item.id !== bank.id));
     const updateBankData = (bank: BankModel): void =>
         setBankList(banksList.map((item) => (item.id === bank.id ? { ...bank } : item)));
@@ -28,6 +30,15 @@ const App = (): JSX.Element => {
         () => ({ isUpdate, banksList, bankInputs, setBankInputs, deleteBank, setIsUpdate, createBank, updateBankData }),
         [banksList, bankInputs, isUpdate],
     );
+
+    useEffect(() => {
+        const banks = JSON.parse(localStorage.getItem('banks') || '{}');
+        if (banks) setBankList(banks);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('banks', JSON.stringify(banksList));
+    }, [banksList]);
 
     return (
         <MyContext.Provider value={contextValue}>

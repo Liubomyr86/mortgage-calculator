@@ -37,8 +37,6 @@ export const CalculatorForm = (props: CalculatorFormProps): JSX.Element => {
         select.setValidationSettings('', false, true, false, false, false);
     };
 
-    console.log(select);
-
     return (
         <form>
             {initianLoan.validationSettings.isDirty && initianLoan.validationSettings.isEmpty && (

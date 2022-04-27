@@ -12,13 +12,17 @@
 }
 
 .App {
-    width: 800px;
+    max-width: 800px;
 }
 
 .logo {
     margin-bottom: 10px;
-    width: 100%;
     text-align: center;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
 }
 
 table {
@@ -109,7 +113,7 @@ tbody tr:last-child td:last-child {
 }
 
 form {
-    width: 600px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -129,4 +133,24 @@ form {
     color: red;
     align-self: flex-start;
     font-size: 14px;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 10px;
+    }
+
+    thead {
+        font-size: 8px;
+    }
+
+    th,
+    td {
+        padding: 5px 5px;
+        vertical-align: middle;
+    }
 }

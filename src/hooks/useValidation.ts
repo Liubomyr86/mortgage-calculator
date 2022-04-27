@@ -64,9 +64,6 @@ export const useValidation = (
                     break;
                 case 'downPayment':
                     if (bankValue) {
-                        console.log(value > validations.initianLoan);
-                        console.log(value, validations.initianLoan);
-
                         const downPaymentValue = +validations.initianLoan * (+bankValue.minDownPayment / 100);
                         if (+value < +downPaymentValue || +value > +validations.initianLoan) {
                             setDownPayment(true);
